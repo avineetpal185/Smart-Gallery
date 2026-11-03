@@ -23,11 +23,11 @@ Screenshots of the application will be added below.
 
 | Home Dashboard | Group Management |
 |---|---|
-| ![Home](screenshots/home.png) | ![Groups](screenshots/groups.png) |
+| ![Home](screenshots/home.jpeg) | ![Groups](screenshots/groups.jpeg) |
 
 | My Galleries | Setup |
 |---|---|
-| ![Galleries](screenshots/galleries.png) | ![Setup](screenshots/setup.png) |
+| ![Galleries](screenshots/galleries.jpeg) | ![Setup](screenshots/setup.jpeg) |
 
 ## 📥 Download
 
