@@ -33,11 +33,11 @@ Screenshots of the application will be added below.
 
 Download the latest APK from the GitHub Releases section:
 
-[**Download Smart Gallery APK**](https://github.com/avineetpal185/Smart-Gallery/releases)
-1)Click the link above to open the GitHub Releases page.
-2)Scroll down to the Assets section.
-3)Click app-debug.apk to download the application.
-4)Install the downloaded APK on your Android device and enjoy Smart Gallery! 🚀
+[**Download Smart Gallery APK**](https://github.com/avineetpal185/Smart-Gallery/releases)  
+1)Click the link above to open the GitHub Releases page.  
+2)Scroll down to the Assets section.  
+3)Click app-debug.apk to download the application.  
+4)Install the downloaded APK on your Android device and enjoy Smart Gallery! 🚀  
 
 ## ⚙️ Installation
 
