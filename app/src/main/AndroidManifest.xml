@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Internet access -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Gallery / Photos access (needed to see WhatsApp images and to ask
+         Android to delete them with MediaStore.createDeleteRequest) -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_VIDEO" />
+
+    <!-- Android 12 and below -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- Android 11+: "All files access" - the user turns it on ONCE in Settings,
+         after which expired WhatsApp images are deleted with no confirmation. -->
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <!-- Android 12+: lets the user allow deleting media without a confirmation
+         screen each time (turned on once in Settings > Media management apps) -->
+    <uses-permission
+        android:name="android.permission.MANAGE_MEDIA"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartGallary"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <!-- Main App -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.SmartGallary">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!--
+            The "receive images through Share" screen (ShareReceiverActivity) was
+            REMOVED on purpose: it created copies. Smart Gallery now manages the
+            original WhatsApp image only.
+        -->
+
+
+        <!--
+            WhatsApp Notification Listener
+
+            This allows Smart Gallery to observe WhatsApp
+            notifications so we can inspect the conversation/group
+            information that WhatsApp exposes.
+        -->
+
+        <service
+            android:name=".GroupNotificationListener"
+            android:exported="false"
+            android:label="Smart Gallery"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".GroupImportAccessibilityService"
+            android:exported="true"
+            android:label="Smart Gallery group import"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/group_import_service" />
+        </service>
+
+    </application>
+
+</manifest>

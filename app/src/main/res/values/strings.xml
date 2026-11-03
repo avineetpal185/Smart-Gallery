@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Smart Gallary</string>
+    <string name="group_import_description">Reads WhatsApp group names from the chat list so Smart Gallery can list all your groups. It does not read messages.</string>
+</resources>
